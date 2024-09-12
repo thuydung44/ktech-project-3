@@ -1,7 +1,6 @@
 package com.example.ktech_project_3.repo;
 
 import com.example.ktech_project_3.entity.Category;
-import com.example.ktech_project_3.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,5 +1,6 @@
 package com.example.ktech_project_3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,8 @@ public class ShopEntity {
     @Setter
     private String name;
     @Setter
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner")
     private UserEntity owner;
 
     @Setter
@@ -32,7 +33,13 @@ public class ShopEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category")
     private Category category;
-
+    @Setter
+    private String rejectReason;
+    @Setter
+    private String closeReason;
+    @Setter
+    @OneToMany(mappedBy = "shop")
+    private List<Product> products;
 
     @Setter
     @Enumerated(EnumType.STRING)
@@ -41,6 +48,8 @@ public class ShopEntity {
         PREPARING,
         REQUESTED,
         OPENING,
+        REJECTED,
+        CLOSE_REQUESTED,
         CLOSED
     }
 
