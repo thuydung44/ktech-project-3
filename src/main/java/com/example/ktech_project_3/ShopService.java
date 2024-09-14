@@ -1,5 +1,6 @@
 package com.example.ktech_project_3;
 
+import com.example.ktech_project_3.dto.CategoryDto;
 import com.example.ktech_project_3.dto.ShopDto;
 import com.example.ktech_project_3.entity.Category;
 import com.example.ktech_project_3.entity.ShopEntity;
@@ -42,7 +43,6 @@ public class ShopService {
             ShopEntity shop = new ShopEntity();
             shop.setOwner(user);
             shop.setOwnerStatus(ShopEntity.OwnerStatus.PREPARING);
-
             return shopRepository.save(shop);
         }
         return null;
@@ -134,6 +134,20 @@ public class ShopService {
             shopRepository.save(shop);
         }
 
+    }
+
+    public List<ShopDto> searchShop(String name, Category category) {
+        List<ShopEntity> shops;
+        if (name!= null && category!= null) {
+            shops = shopRepository.findByNameContainingAndCategory(name, category);
+        } else if (name!= null) {
+            shops = shopRepository.findByNameContaining(name);
+        } else if (category!= null) {
+            shops = shopRepository.findByCategory(category);
+        } else {
+            shops = shopRepository.findAll();
+        }
+        return shops.stream().map(ShopDto::fromEntity).collect(Collectors.toList());
     }
 }
 

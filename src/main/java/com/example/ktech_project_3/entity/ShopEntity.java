@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -38,8 +39,13 @@ public class ShopEntity {
     @Setter
     private String closeReason;
     @Setter
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
+
+    @Setter
+    private LocalDateTime LastShoppingTime;
+
+
 
     @Setter
     @Enumerated(EnumType.STRING)

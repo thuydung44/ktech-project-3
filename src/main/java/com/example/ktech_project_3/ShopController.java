@@ -1,8 +1,10 @@
 package com.example.ktech_project_3;
 
+import com.example.ktech_project_3.dto.CategoryDto;
 import com.example.ktech_project_3.dto.RejectReason;
 import com.example.ktech_project_3.dto.ShopCloseRequest;
 import com.example.ktech_project_3.dto.ShopDto;
+import com.example.ktech_project_3.entity.Category;
 import com.example.ktech_project_3.entity.ShopEntity;
 import com.example.ktech_project_3.entity.UserEntity;
 import org.springframework.http.HttpStatus;
@@ -108,6 +110,13 @@ public class ShopController {
         shopService.closeShop(shopId);
         return "Shop closed successfully";
 
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<ShopDto>> searchShops(
+            @RequestParam String name,
+            @RequestBody Category category
+            ) {
+        return ResponseEntity.ok(shopService.searchShop(name, category));
     }
 }
 
