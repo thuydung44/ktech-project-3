@@ -19,16 +19,16 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDto {
     private Long id;
-    @Setter
+   // @Setter
     private ProductDto product;
-    @Setter
+   // @Setter
     private UserDto buyer;
-    @Setter
+   // @Setter
     private Integer quantity;
-    @Setter
+   // @Setter
     private Double totalAmount;
-    @Setter
-    @Enumerated(EnumType.STRING)
+   // @Setter
+   // @Enumerated(EnumType.STRING)
     private Order.OrderStatus orderStatus = Order.OrderStatus.PENDING;
     private boolean idPaid;
     public static OrderDto fromEntity(Order entity) {

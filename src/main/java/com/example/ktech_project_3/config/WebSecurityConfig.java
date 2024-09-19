@@ -27,7 +27,7 @@ public class WebSecurityConfig {
                     auth.requestMatchers("/token/issue", "/error", "/token/issue-admin").permitAll();
                     auth.requestMatchers("/users/my-profile","/users/update", "/users/update/image").authenticated();
                     auth.requestMatchers("/users/register").anonymous();
-                    auth.requestMatchers("/users/apply-business", "/shops/search", "/products/search", "/orders/**").hasRole("USER");
+                    auth.requestMatchers("/users/apply-business", "/products/search", "/orders/**").hasRole("USER");
                     auth.requestMatchers("/users/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/shops/create").hasRole("BUSINESS");
 

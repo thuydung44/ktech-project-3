@@ -12,7 +12,6 @@ import lombok.ToString;
 
 public class CategoryDto {
     private Long id;
-    @Setter
     private String name;
     public static CategoryDto fromEntity(Category entity) {
         CategoryDto dto = new CategoryDto();

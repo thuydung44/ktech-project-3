@@ -19,22 +19,22 @@ import java.util.List;
 @NoArgsConstructor
 public class ShopDto {
     private Long id;
-    @Setter
+   // @Setter
     private String name;
-    @Setter
+   // @Setter
     private  String description;
-    @Setter
+  //  @Setter
     private CategoryDto category;
-    @Setter
+  //  @Setter
     private UserDto owner;
-    @Setter
+  //  @Setter
     @Enumerated(EnumType.STRING)
     private ShopEntity.OwnerStatus ownerStatus = ShopEntity.OwnerStatus.PREPARING;
-    @Setter
+  //  @Setter
     private String rejectReason;
-    @Setter
+  //  @Setter
     private String closeReason;
-    @Setter
+  //  @Setter
     private LocalDateTime lastShoppingTime;
 
 

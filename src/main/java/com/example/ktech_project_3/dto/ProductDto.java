@@ -15,17 +15,17 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductDto {
     private Long id;
-    @Setter
+  //  @Setter
     private String name;
-    @Setter
+   // @Setter
     private String productImgUrl;
-    @Setter
+   // @Setter
     private String description;
-    @Setter
+   // @Setter
     private Double price;
-    @Setter
+   // @Setter
     private Integer stock;
-    @Setter
+   // @Setter
     private ShopDto shop;
 
     public static ProductDto fromEntity(Product product) {

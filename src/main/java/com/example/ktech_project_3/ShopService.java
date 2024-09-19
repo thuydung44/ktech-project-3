@@ -11,6 +11,7 @@ import com.example.ktech_project_3.repo.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,6 +47,10 @@ public class ShopService {
             return shopRepository.save(shop);
         }
         return null;
+    }
+
+    public List<ShopEntity> shopList() {
+        return shopRepository.findAll();
     }
 
     public ShopDto updateShop(Long shopId, ShopDto shopDto) {
@@ -114,6 +119,7 @@ public class ShopService {
 
 
     }
+
     public String closeShopRequest(Long shopId, String closeReason) {
         Optional<ShopEntity> shopOpt = shopRepository.findById(shopId);
         if (shopOpt.isPresent() && shopOpt.get().getOwnerStatus() == ShopEntity.OwnerStatus.OPENING) {
@@ -136,6 +142,7 @@ public class ShopService {
 
     }
 
+
     public List<ShopDto> searchShop(String name, Category category) {
         List<ShopEntity> shops;
         if (name!= null && category!= null) {
@@ -148,8 +155,21 @@ public class ShopService {
             shops = shopRepository.findAll();
         }
         return shops.stream().map(ShopDto::fromEntity).collect(Collectors.toList());
+
     }
+   /* public List<ShopDto> searchShopByName(String name) {
+        List<ShopEntity> targetShop = new ArrayList<>();
+        for (ShopEntity shop : this.shopList()) {
+            if (shop.getName().equals(name)) {
+                targetShop.add(shop);
+            }
+        }
+        return
+
+    }*/
 }
+
+
 
 
 
