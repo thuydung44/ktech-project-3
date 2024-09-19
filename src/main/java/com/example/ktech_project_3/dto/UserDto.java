@@ -37,6 +37,7 @@ public class UserDto {
         dto.nickname = entity.getNickname();
         dto.name = entity.getName();
         dto.username = entity.getUsername();
+        dto.age = entity.getAge();
         dto.email = entity.getEmail();
         dto.phone = entity.getPhone();
         dto.password = entity.getPassword();
